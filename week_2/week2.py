@@ -134,7 +134,7 @@ much information that you may know, including physical description, any \
 known addresses, gang affiliations, and other locations where he/she may be found.
 
 If you are reporting a crime in progress, or require emergency service, \
-please dial 9-1-1, from a phone now.""", 0, 0, name="desc")
+please dial 9-1-1, from a phone now.""", 0, 0, name="desc", colspan='2')
     builder.add_label("Subject", 1, 0, target="subject")
     builder.add_entry("subject", 1, 1)
     builder.add_label("Location", 2, 0, target="location")
@@ -296,11 +296,12 @@ pady="0.75m")""".format(name, row, column)
     def add_text(self, text, row, column, **kwargs):
         # TODO Implement me!
         name = self._canonicalize(kwargs["name"])
+        colspan = kwargs["colspan"]
         height = len(text) // 30 + 1
-        create = """self.{}Text = ttk.Text(root, height={}, width=20)""".format(name, height)
+        create = """self.{}Text = tk.Text(self, height={}, width=20)""".format(name, height)
         layout = """self.{}Text.grid(row={}, column={}, sticky=(\
-tk.W, tk.E), padx="0.75m", pady="0.75m")""".format(name, row, column)
-        insert = """self.{}Text.insert(END, "{}")""".format(name, text)
+tk.W, tk.E), padx="0.75m", pady="0.75m", columnspan={})""".format(name, row, column, colspan)
+        insert = 'self.{}Text.insert(tk.INSERT, """{}""")'.format(name, text)
         self.statements.extend((create, layout, insert))
     def form(self):
         return TkFormBuilder.TEMPLATE.format(title=self.title,

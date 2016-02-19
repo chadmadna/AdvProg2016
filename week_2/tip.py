@@ -8,13 +8,13 @@ class SubmitaTipForm(tk.Toplevel):
         super().__init__(master)
         self.withdraw()     # hide until ready to show
         self.title("Submit a Tip")
-        self.descText = ttk.Text(root, height=18, width=20)
-        self.descText.grid(row=0, column=0, sticky=(tk.W, tk.E), padx="0.75m", pady="0.75m")
-        self.descText.insert(END, "Use this electronic form to submit information regarding suspicious, nuisance and criminal activity to the Philadelphia Police Department. You may submit a tip anonymously.
+        self.descText = tk.Text(self, height=18, width=20)
+        self.descText.grid(row=0, column=0, sticky=(tk.W, tk.E), padx="0.75m", pady="0.75m", columnspan=2)
+        self.descText.insert(tk.INSERT, """Use this electronic form to submit information regarding suspicious, nuisance and criminal activity to the Philadelphia Police Department. You may submit a tip anonymously.
 
 If you are filling out a tip on a potential or wanted suspect, fill out as much information that you may know, including physical description, any known addresses, gang affiliations, and other locations where he/she may be found.
 
-If you are reporting a crime in progress, or require emergency service, please dial 9-1-1, from a phone now.")
+If you are reporting a crime in progress, or require emergency service, please dial 9-1-1, from a phone now.""")
         self.subjectLabel = ttk.Label(self, text="Subject:")
         self.subjectLabel.grid(row=1, column=0, sticky=tk.W, padx="0.75m", pady="0.75m")
         self.subjectEntry = ttk.Entry(self)
