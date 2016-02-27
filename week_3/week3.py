@@ -218,7 +218,9 @@ class MarkdownWriter:
         are also appended with a new line symbol ('\n')
         """
         # TODO Implement me!
-        pass
+        txt_len = len(text)
+        txt_symbols = '=' * txt_len
+        self.file.write("{}\n{}\n".format(text, txt_symbols))
 
     def paragraph(self, text):
         """
@@ -226,7 +228,7 @@ class MarkdownWriter:
         simply written and appended with a new line symbol ('\n')
         """
         # TODO Implement me!
-        pass
+        self.file.write("{}\n".format(text))
 
 if __name__ == "__main__":
     main()
