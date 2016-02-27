@@ -126,7 +126,9 @@ class TextRenderer:
         of written text.
         """
         # TODO Implement me!
-        pass
+        if self.previous:
+            self.file.write("\n")
+        self.file.write(self.FMT_FOOTER)
 
 
 class HtmlWriter:
