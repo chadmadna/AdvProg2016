@@ -88,7 +88,7 @@ class Page:
         that will be written into the page.
         """
         # TODO Implement me!
-        pass
+        self.paragraphs.append(paragraph)
 
     def render(self):
         self.renderer.header(self.title)
