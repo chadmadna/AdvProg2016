@@ -165,22 +165,22 @@ class HtmlRenderer:
 
     def __init__(self, htmlWriter):
         # TODO Implement me!
-        pass
-
+        self.writer = htmlWriter
 
     def header(self, title):
         # TODO Implement me!
-        pass
-
+        self.writer.header()
+        self.writer.title(title)
+        self.writer.start_body()
 
     def paragraph(self, text):
         # TODO Implement me!
-        pass
-
+        self.writer.body(text)
 
     def footer(self):
         # TODO Implement me!
-        pass
+        self.writer.end_body()
+        self.writer.footer()
 
 class MarkdownRenderer:
 
