@@ -186,15 +186,15 @@ class MarkdownRenderer:
 
     def __init__(self, markdownWriter):
         # TODO Implement me!
-        pass
+        self.writer = markdownWriter
 
     def header(self, title):
         # TODO Implement me!
-        pass
+        self.writer.header_level_1(title)
 
     def paragraph(self, text):
         # TODO Implement me!
-        pass
+        self.writer.paragraph(text)
 
     def footer(self):
         pass
