@@ -30,9 +30,9 @@ in `week_4` directory.
 Mandatory Checklist
 -------------------
 
-* [ ] All unit tests (except `test_composite()`) related to methods in 
+* [X] All unit tests (except `test_composite()`) related to methods in 
     `SimpleItem` pass without failures.
-* [ ] The state of work related to `SimpleItem` implementation is commited 
+* [X] The state of work related to `SimpleItem` implementation is commited 
     and pushed to GitLab.
 * [ ] All unit tests (except `test_composite()`) related to methods in 
     `CompositeItem` pass without failures.

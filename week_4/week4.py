@@ -60,7 +60,7 @@ class SimpleItem(AbstractItem):
     @property
     def composite(self):
         # TODO Implement me!
-        pass
+        return False
 
     def print(self, indent="", file=sys.stdout):
         print("{}${:.2f} {}".format(indent, self.price, self.name), 
