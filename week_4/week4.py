@@ -36,7 +36,10 @@ def do_log(Class):
     # TODO Implement me!
     # Hint: `inspect` module might be useful in implementing this
     # class decorator
-    pass
+    class_methods = getmembers(Class, predicate=ismethod)
+    for name, method in class_methods:
+        setattr(Class, name, logged(method))
+    return Class
 
 def main():
     pencil = Item.create("Pencil", 0.40)
@@ -122,6 +125,7 @@ class CompositeItem(AbstractCompositeItem):
             child.print(indent + "      ", file)
 
 
+@do_log
 class Item:
 # TODO Add do_log class decorator!
 

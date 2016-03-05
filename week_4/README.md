@@ -57,9 +57,9 @@ Additional Checklist
 * [X] Implemented `test_composite()` unit test in `SimpleItemTest`.
 * [X] Implemented `test_composite()` unit test in `CompositeItemTest`.
 * [X] Implemented remaining unit tests in `ItemTest`.
-* [ ] Implemented `do_log()` class decorator.
-* [ ] Decorated `Item` class with `do_log()` class decorator.
-* [ ] The `do_log()` class decorator is working properly when the 
+* [X] Implemented `do_log()` class decorator.
+* [X] Decorated `Item` class with `do_log()` class decorator.
+* [X] The `do_log()` class decorator is working properly when the 
     program is run.
 
 Additional Resources
