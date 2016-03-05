@@ -20,7 +20,16 @@ import sys
 
 def logged(function):
     # TODO Implement me!
-    pass
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        comma = ', ' if kwargs else ''
+        print("You called {}({}{}{})".format(function.__name__,
+                                              str(args).strip('()'), comma,
+                                              str(kwargs).strip('{}')))
+        ret = function(*args, **kwargs)
+        print("It returned {}".format(ret))
+        return ret
+    return wrapper
 
 def do_log(Class):
     # TODO Implement me!
@@ -171,10 +180,12 @@ class Item:
         return "{}:${}".format(self.name, self.price)
 
 
+@logged
 def make_item(name, price):
     # TODO Add logged function decorator!
     return Item(name, price=price)
 
+@logged
 def make_composite(name, *items):
     # TODO Add logged function decorator!
     return Item(name, *items)

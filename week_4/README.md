@@ -43,12 +43,12 @@ Mandatory Checklist
     `Item` pass without failures.
 * [X] The state of work related to `Item` implementation is 
     commited and pushed to GitLab.
-* [ ] Implemented `logged()` function decorator.
-* [ ] Decorated `make_item()` and `make_composite()` functions with 
+* [X] Implemented `logged()` function decorator.
+* [X] Decorated `make_item()` and `make_composite()` functions with 
     `logged()` function decorator.
-* [ ] The `logged()` decorator is working properly when the program 
+* [X] The `logged()` decorator is working properly when the program 
     calls `make_item()` and `make_composite()`.
-* [ ] The state of work related to implementing function decorator is
+* [X] The state of work related to implementing function decorator is
     commited and pushed to GitLab.
 
 Additional Checklist
