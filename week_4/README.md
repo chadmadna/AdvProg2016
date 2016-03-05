@@ -34,9 +34,9 @@ Mandatory Checklist
     `SimpleItem` pass without failures.
 * [X] The state of work related to `SimpleItem` implementation is commited 
     and pushed to GitLab.
-* [ ] All unit tests (except `test_composite()`) related to methods in 
+* [X] All unit tests (except `test_composite()`) related to methods in 
     `CompositeItem` pass without failures.
-* [ ] The state of work related to `CompositeItem` implementation is 
+* [X] The state of work related to `CompositeItem` implementation is 
     commited and pushed to GitLab.
 * [ ] All unit tests (except `test_create()`, `test_compose()`, 
     `test_composite()`, and `test_print_simple()`) related to methods in 

@@ -76,11 +76,13 @@ class AbstractCompositeItem(AbstractItem):
 
     def add(self, first, *items):
         # TODO Implement me!
-        pass
+        self.children.append(first)
+        if items:
+            self.children.extend(items)
 
     def remove(self, item):
         # TODO Implement me!
-        pass
+        self.children.remove(item)
 
     def __iter__(self):
         return iter(self.children)
@@ -95,7 +97,7 @@ class CompositeItem(AbstractCompositeItem):
     @property
     def composite(self):
         # TODO Implement me!
-        pass
+        return True
     
     @property
     def price(self):
