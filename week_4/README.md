@@ -38,10 +38,10 @@ Mandatory Checklist
     `CompositeItem` pass without failures.
 * [X] The state of work related to `CompositeItem` implementation is 
     commited and pushed to GitLab.
-* [ ] All unit tests (except `test_create()`, `test_compose()`, 
+* [X] All unit tests (except `test_create()`, `test_compose()`, 
     `test_composite()`, and `test_print_simple()`) related to methods in 
     `Item` pass without failures.
-* [ ] The state of work related to `Item` implementation is 
+* [X] The state of work related to `Item` implementation is 
     commited and pushed to GitLab.
 * [ ] Implemented `logged()` function decorator.
 * [ ] Decorated `make_item()` and `make_composite()` functions with 

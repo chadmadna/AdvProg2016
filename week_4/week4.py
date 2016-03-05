@@ -125,25 +125,25 @@ class Item:
     @classmethod
     def create(Class, name, price):
         # TODO Implement me!
-        pass
+        return Class(name, price=price)
 
     @classmethod
     def compose(Class, name, *items):
         # TODO Implement me!
-        pass
+        return Class(name, *items)
 
     @property
     def composite(self):
         # TODO Implement me!
-        pass
+        return bool(self.children)
 
     def add(self, first, *items):
         # TODO Implement me!
-        pass
+        self.children.extend(itertools.chain((first,), items))
 
     def remove(self, item):
         # TODO Implement me!
-        pass
+        self.children.remove(item)
 
     def __iter__(self):
         return iter(self.children)
@@ -151,12 +151,13 @@ class Item:
     @property
     def price(self):
         # TODO Implement me!
-        pass
+        return (self.__price + sum(item.price for item in self) if self.children else
+                self.__price)
 
     @price.setter
     def price(self, price):
         # TODO Implement me!
-        pass
+        self.__price = price
 
     def print(self, indent="", file=sys.stdout):
         print("{}${:.2f} {}".format(indent, self.price, self.name),
