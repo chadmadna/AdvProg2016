@@ -92,7 +92,6 @@ class ItemTest(unittest.TestCase):
         # TODO Implement me!
         # Do not forget to replace self.fail() statement with 
         # correct assertion method(s)!
-        self.fail("Not yet implemented.")
         tipex = Item.create("Tipex", 1.00)
         self.assertEqual(tipex.name, "Tipex")
         self.assertAlmostEqual(tipex.price, 1.00)
@@ -102,13 +101,20 @@ class ItemTest(unittest.TestCase):
         # TODO Implement me!
         # Do not forget to replace self.fail() statement with 
         # correct assertion method(s)!
-        self.fail("Not yet implemented.")
+        mechPencilCasing = Item.create("Mechanical Pencil Casing", 4.20)
+        mechPencilLead = Item.create("Mechanical Pencil Lead", 0.10)
+        mechPencil = Item.compose("Mechanical Pencil", mechPencilCasing,
+                                  mechPencilLead)
+        self.assertEqual(mechPencil.name, "Mechanical Pencil")
+        self.assertAlmostEqual(mechPencil.price, 4.30)
+        self.assertTrue(mechPencil.composite)
 
     def test_composite(self):
         # TODO Implement me!
         # Do not forget to replace self.fail() statement with 
         # correct assertion method(s)!
-        self.fail("Not yet implemented.")
+        self.assertTrue(self.pencilSet.composite)
+        self.assertFalse(self.eraser.composite)
 
     def test_add_to_composite(self):
         lead = Item.create("Lead", 0.05)
@@ -171,7 +177,8 @@ class ItemTest(unittest.TestCase):
         # TODO Implement me!
         # Do not forget to replace self.fail() statement with 
         # correct assertion method(s)!
-        self.fail("Not yet implemented.")
+        self.ruler.print(file=self.stdout)
+        self.assertEqual(self.stdout.buffer[0], "$1.60 Ruler")
 
 
 if __name__ == "__main__":
