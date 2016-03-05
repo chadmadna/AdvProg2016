@@ -54,8 +54,8 @@ Mandatory Checklist
 Additional Checklist
 --------------------
 
-* [ ] Implemented `test_composite()` unit test in `SimpleItemTest`.
-* [ ] Implemented `test_composite()` unit test in `CompositeItemTest`.
+* [X] Implemented `test_composite()` unit test in `SimpleItemTest`.
+* [X] Implemented `test_composite()` unit test in `CompositeItemTest`.
 * [ ] Implemented remaining unit tests in `ItemTest`.
 * [ ] Implemented `do_log()` class decorator.
 * [ ] Decorated `Item` class with `do_log()` class decorator.

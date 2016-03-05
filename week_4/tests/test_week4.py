@@ -47,7 +47,9 @@ class SimpleItemTest(unittest.TestCase):
         # is not a composite object!
         # Do not forget to replace self.fail() statement with 
         # correct assertion method(s)!
-        self.fail("Not yet implemented.")
+        self.assertEqual(self.pencil.composite, False)
+        self.assertEqual(self.ruler.composite, False)
+        self.assertEqual(self.eraser.composite, False)
 
 
 class CompositeItemTest(SimpleItemTest):
@@ -72,7 +74,8 @@ class CompositeItemTest(SimpleItemTest):
         # composite object!
         # Do not forget to replace self.fail() statement with 
         # correct assertion method(s)!
-        self.fail("Not yet implemented.")
+        self.assertEqual(self.pencilSet.composite, True)
+        self.assertEqual(self.boxedPencilSet.composite, True)
 
 
 class ItemTest(unittest.TestCase):

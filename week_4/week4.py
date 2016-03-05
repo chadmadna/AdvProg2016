@@ -17,6 +17,7 @@ import abc
 import functools
 import itertools
 import sys
+from inspect import getmembers, ismethod
 
 def logged(function):
     # TODO Implement me!
