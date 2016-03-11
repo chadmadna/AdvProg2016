@@ -98,7 +98,7 @@ def do_create_cell(user_input, context):
     args = user_input.split(" ")
     try:
         x, y, color = int(args[2]), int(args[3]), str(args[4])
-        command = context["grid"].create_cell_command(x, y, color))
+        command = context["grid"].create_cell_command(x, y, color)
         context["commands"].append(command)
     except ValueError:
         print("Incorrect argument(s) type were passed.")
@@ -109,9 +109,8 @@ def do_create_rect(user_input, context):
     # TODO Implement me!
     args = user_input.split(" ")
     try:
-        x0, y0, x1, y1, color = int(args[2]), int(args[3]),
-                                int(args[4]), int(args[5]),
-                                str(args[6])
+        x0, y0, x1, y1, color = int(args[2]), int(args[3]),\
+                                int(args[4]), int(args[5]), str(args[6])
         macro = context["grid"].create_rectangle_macro(x0, y0, x1, y1, color)
         context["commands"].append(macro)
     except ValueError:
@@ -134,7 +133,10 @@ def do_help(user_input, context):
 
 def do_exit(user_input, context):
     # TODO Implement me!
-    pass
+    for command in context["commands"]:
+        command()
+    context["html"].append(context["grid"].as_html("Interpreter Grid"))
+    context["running"] = False
 
 def main():
     parser = argparse.ArgumentParser()
