@@ -86,16 +86,14 @@ def do_start(user_input, context):
     args = user_input.split(" ")
     try:
         width, height = int(args[1]), int(args[2])
-
         # TODO Implement me!
-        pass
+        context["grid"] = UndoableGrid(width, height)
     except ValueError:
         print("Incorrect argument(s) type were passed.")
     except IndexError:
         print("Incorrect arguments position.")
 
 def do_create_cell(user_input, context):
-    args = user_input.split(" ")
     # TODO Implement me!
     pass
 

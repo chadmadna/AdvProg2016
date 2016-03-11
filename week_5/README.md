@@ -87,7 +87,7 @@ of executing `Command` objects.
 Additional Checklist
 --------------------
 
-* [ ] Implemented `do_start()` function in `week5.py`.
+* [X] Implemented `do_start()` function in `week5.py`.
 * [ ] Implemented `do_create_cell()` function in `week5.py`.
 * [ ] Implemented `do_create_rect()` function in `week5.py`.
 * [ ] Implemented `do_undo()` function in `week5.py`.
