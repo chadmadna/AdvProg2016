@@ -40,6 +40,7 @@ class Macro:
         if not isinstance(command, Command):
             raise TypeError("Expected object of type Command, got {}".
                             format(type(command).__name__))
+        self.__commands.append(command)
 
     def __len__(self):
         return len(self.__commands)

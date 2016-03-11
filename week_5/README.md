@@ -74,9 +74,9 @@ has been provided where you need to provide correct regex assertions.
 Mandatory Checklist
 -------------------
 
-* [ ] Completed all TODO in `command.py`.
-* [ ] All tests in `test_command.py` pass without failures.
-* [ ] Commited and pushed changes in `command.py` to GitLab.
+* [X] Completed all TODO in `command.py`.
+* [X] All tests in `test_command.py` pass without failures.
+* [X] Commited and pushed changes in `command.py` to GitLab.
 * [ ] Completed all TODO in `grid.py`.
 * [ ] All tests except `test_as_html()` in `test_grid.py` 
 pass without failures.
