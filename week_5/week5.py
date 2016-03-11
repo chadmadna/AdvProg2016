@@ -98,7 +98,8 @@ def do_create_cell(user_input, context):
     args = user_input.split(" ")
     try:
         x, y, color = int(args[2]), int(args[3]), str(args[4])
-        context["grid"].create_cell_command(x, y, color)
+        command = context["grid"].create_cell_command(x, y, color))
+        context["commands"].append(command)
     except ValueError:
         print("Incorrect argument(s) type were passed.")
     except IndexError:
@@ -111,7 +112,8 @@ def do_create_rect(user_input, context):
         x0, y0, x1, y1, color = int(args[2]), int(args[3]),
                                 int(args[4]), int(args[5]),
                                 str(args[6])
-        context["grid"].create_rectangle_macro(x0, y0, x1, y1, color)
+        macro = context["grid"].create_rectangle_macro(x0, y0, x1, y1, color)
+        context["commands"].append(macro)
     except ValueError:
         print("Incorrect argument(s) type were passed.")
     except IndexError:
@@ -119,7 +121,8 @@ def do_create_rect(user_input, context):
 
 def do_undo(user_input, context):
     # TODO Implement me!
-    pass
+    undo_command = context["commands"][-1].undo
+    context["commands"].append(undo_command)
 
 def do_help(user_input, context):
     print("""Valid commands: 
