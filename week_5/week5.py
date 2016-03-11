@@ -106,7 +106,16 @@ def do_create_cell(user_input, context):
 
 def do_create_rect(user_input, context):
     # TODO Implement me!
-    pass
+    args = user_input.split(" ")
+    try:
+        x0, y0, x1, y1, color = int(args[2]), int(args[3]),
+                                int(args[4]), int(args[5]),
+                                str(args[6])
+        context["grid"].create_rectangle_macro(x0, y0, x1, y1, color)
+    except ValueError:
+        print("Incorrect argument(s) type were passed.")
+    except IndexError:
+        print("Incorrect arguments position.")
 
 def do_undo(user_input, context):
     # TODO Implement me!
