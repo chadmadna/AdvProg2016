@@ -1,6 +1,22 @@
----
 image: python:3.5
-testjob:
+
+teaching-team-test:
   script:
     - python -m unittest discover -s week_3 -v
     - python -m unittest discover -s week_4 -v
+  only:
+    - /.*sol$/@AdvProg2016/course-materials-development
+  except:
+    - master@AdvProg2016/course-materials-development
+    - branches@AdvProg2016/weekly-exercises
+    - master@AdvProg2016/weekly-exercises
+
+student-test:
+  script:
+    - python -m unittest discover -s week_3 -v
+    - python -m unittest discover -s week_4 -v
+  except:
+    - master@AdvProg2016/course-materials-development
+    - branches@AdvProg2016/course-materials-development
+    - master@AdvProg2016/weekly-exercises
+
