@@ -95,7 +95,14 @@ def do_start(user_input, context):
 
 def do_create_cell(user_input, context):
     # TODO Implement me!
-    pass
+    args = user_input.split(" ")
+    try:
+        x, y, color = int(args[2]), int(args[3]), str(args[4])
+        context["grid"].create_cell_command(x, y, color)
+    except ValueError:
+        print("Incorrect argument(s) type were passed.")
+    except IndexError:
+        print("Incorrect arguments position.")
 
 def do_create_rect(user_input, context):
     # TODO Implement me!
