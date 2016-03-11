@@ -80,9 +80,9 @@ Mandatory Checklist
 * [X] Completed all TODO in `grid.py`.
 * [X] All tests except `test_as_html()` in `test_grid.py` 
 pass without failures.
-* [ ] The program is able to produce HTML file containing the result 
+* [X] The program is able to produce HTML file containing the result 
 of executing `Command` objects.
-* [ ] Commited and pushed changes in `grid.py` to GitLab.
+* [X] Commited and pushed changes in `grid.py` to GitLab.
 
 Additional Checklist
 --------------------
