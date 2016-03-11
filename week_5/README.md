@@ -77,8 +77,8 @@ Mandatory Checklist
 * [X] Completed all TODO in `command.py`.
 * [X] All tests in `test_command.py` pass without failures.
 * [X] Commited and pushed changes in `command.py` to GitLab.
-* [ ] Completed all TODO in `grid.py`.
-* [ ] All tests except `test_as_html()` in `test_grid.py` 
+* [X] Completed all TODO in `grid.py`.
+* [X] All tests except `test_as_html()` in `test_grid.py` 
 pass without failures.
 * [ ] The program is able to produce HTML file containing the result 
 of executing `Command` objects.

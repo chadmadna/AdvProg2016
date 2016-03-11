@@ -19,7 +19,9 @@ class Grid:
 
     def cell(self, x, y, color=None):
         # TODO Implement me!
-        pass
+        if color is None:
+            return self.__cells[x][y]
+        self.__cells[x][y] = color
 
     @property
     def rows(self):
@@ -53,8 +55,17 @@ class UndoableGrid(Grid):
 
     def create_cell_command(self, x, y, color):
         # TODO Implement me!
-        pass
+        def undo():
+            self.cell(x, y, undo.color)
+        def do():
+            undo.color = self.cell(x, y)
+            self.cell(x, y, color)
+        return Command(do, undo, "Cell")
     
     def create_rectangle_macro(self, x0, y0, x1, y1, color):
         # TODO Implement me!
-        pass
+        macro = Macro("Rectangle")
+        for x in range(x0, x1 + 1):
+            for y in range(y0, y1 + 1):
+                macro.add(self.create_cell_command(x, y, color))
+        return macro
