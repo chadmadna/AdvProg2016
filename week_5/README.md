@@ -94,7 +94,7 @@ Additional Checklist
 * [X] Implemented `do_exit()` function in `week5.py`.
 * [X] The program can undo a `/create cell` command. Check the generated HTML file.
 * [X] The program can undo a `/create rect` command. Check the generated HTML file.
-* [ ] Completed `test_as_html()` test case in `test_grid.py` using 
+* [X] Completed `test_as_html()` test case in `test_grid.py` using 
 regex assertions.
 
 Additional Resources

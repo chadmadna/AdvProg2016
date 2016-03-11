@@ -73,5 +73,31 @@ class MacroTest(unittest.TestCase):
 
     # How to (mock) test do() and undo() in Macro?
 
+    def test_call(self):
+        self.mac2 = Macro("Sample Macro 2")
+        self.mac3 = Macro("Sample Macro 3")
+
+        for i in range(1, 6):
+            self.mac2.add(Command(lambda: None, lambda: None, 
+                "Sample Command {}".format(i)))
+
+        for i in range(6, 11):
+            self.mac3.add(Command(lambda: None, lambda: None, 
+                "Sample Command {}".format(i)))
+            
+        mock_mac2 = MagicMock(self.mac2)
+        mock_mac3 = MagicMock(self.mac3)
+        mock_mac2()
+        mock_mac2.undo()
+        mock_mac3.do()
+        mock_mac3.undo()
+        self.assertTrue(mock_mac2.called)
+        self.assertTrue(mock_mac2.undo.called)
+        self.assertTrue(mock_mac3.do.called)
+        self.assertTrue(mock_mac3.undo.called)
+        self.assertEqual(mock_mac2.call_count, 1)
+        self.assertEqual(len(mock_mac2.method_calls), 1)
+        self.assertEqual(len(mock_mac3.method_calls), 2)
+
 if __name__ == "__main__":
     unittest.main()

@@ -40,6 +40,8 @@ class GridTest(unittest.TestCase):
         self.assertEqual(4, self.rectangleGrid.columns)
 
     def test_as_html(self):
+        from re import findall
+        
         # Get generated HTML document
         html_result = self.squareGrid.as_html()
 
@@ -47,15 +49,15 @@ class GridTest(unittest.TestCase):
 
         # Has <table> tag and may contain tag properties
         # TODO Write correct assertion here!
-        self.fail()
+        self.assertRegex(html_result, r'<table\s*(\w*="[^>]*")>')
 
         # Contains more than one <tr> tags
         # TODO Write correct assertion here!
-        self.fail()
+        self.assertTrue(len(findall(r'(<tr>)', html_result)) > 1)
 
         # Has closed </table> tag
         # TODO Write correct assertion here!
-        self.fail()
+        self.assertRegex(html_result, r'<table\s*(\w*="[^>]*")>(.|\s)*</table>')
 
 class UndoableGridTest(GridTest):
 
