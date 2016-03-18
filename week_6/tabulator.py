@@ -25,12 +25,12 @@ def main():
     htmlLayout = Layout(html_tabulator)
     for rows in range(2, 6):
         print(htmlLayout.tabulate(rows, WINNERS))
-    textLayout = Layout(text_tabulator)
-    for rows in range(2, 6):
-        print(textLayout.tabulate(rows, WINNERS))
-    alternateLayout = Layout(alternate_table_row_color_html_tabulator)
-    for rows in range(2, 6):
-        print(alternateLayout.tabulate(rows, WINNERS))
+    # textLayout = Layout(text_tabulator)
+    # for rows in range(2, 6):
+    #     print(textLayout.tabulate(rows, WINNERS))
+    # alternateLayout = Layout(alternate_table_row_color_html_tabulator)
+    # for rows in range(2, 6):
+    #     print(alternateLayout.tabulate(rows, WINNERS))
 
 
 class Layout:
@@ -38,21 +38,35 @@ class Layout:
     def __init__(self, tabulator):
         self.tabulate = tabulator
 
+# HOW TO PUT BREAKPOINT ON PYCHARM
+# Click on the space beside the line number of the
+# line of code you want to stop before while
+# debugging. The debugger will halt execution
+# just before the breakpoint, so that you can
+# inspect code while stepping through line-by-line
+# execution.
 
-def html_tabulator(rows, items):
+def html_tabulator(rows, items):    # Broken!
+
     columns, remainder = divmod(len(items), rows)
     if remainder:
         columns += 1
     column = 0
     table = ['<table border="1">\n']
     for item in items:
-        if column != 0:
+        # Originally: 'if column != 0:'
+        # Supposed to check if column counter is on zero,
+        # indicating the start of a new row.
+        if column == 0:
             table.append("<tr>")
         table.append("<td>{}</td>".format(escape(str(item))))
         column += 1
         if column == columns:
             table.append("</tr>\n")
-        column //= columns
+        # Originally: 'column //= columns'
+        # Supposed to reset column counter back to 0 by
+        # modulo upon reaching column count limit.
+        column %= columns
     if table[-1][-1] != "\n":
         table.append("</tr>\n")
     table.append("</table>\n")

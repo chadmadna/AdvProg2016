@@ -114,15 +114,15 @@ Mandatory Checklist
 * [X] Committed and pushed changes related to implementing `SliderModel` class.
 * [X] Fixed `update()` in `LiveView` class.
 * [X] Committed and pushed changes related to fixing `update()` in `LiveView` class.
-* [ ] Pinpointed the broken algorithm function in `tabulator.py`.
-* [ ] Can demonstrate how to put a breakpoint. Please write the steps directly in the 
+* [X] Pinpointed the broken algorithm function in `tabulator.py`.
+* [X] Can demonstrate how to put a breakpoint. Please write the steps directly in the 
 source code as comments.
-* [ ] Can explain the reason why the algorithm function is broken after debugging the 
+* [X] Can explain the reason why the algorithm function is broken after debugging the 
 function. Please write the reason directly in the source code as comments. Hint: 
 Inspect the content of the variable that holds the HTML string. 
-* [ ] Fixed the broken algorithm function in `tabulator.py`.
-* [ ] All tests in `HtmlTabulatorTest` pass.
-* [ ] Committed and pushed changes related to debugging and fixing the broken 
+* [X] Fixed the broken algorithm function in `tabulator.py`.
+* [X] All tests in `HtmlTabulatorTest` pass.
+* [X] Committed and pushed changes related to debugging and fixing the broken 
 algorithm function.
 
 Additional Checklist
