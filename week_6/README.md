@@ -132,8 +132,8 @@ Additional Checklist
 * [X] The program is able to print the output of `AlertView` 
 correctly to standard output. Use standard output redirection 
 when running the program.
-* [ ] All tests in `AlternateTableRowHtmlTabulatorTest` pass.
-* [ ] The program is able to print the output of alternating 
+* [X] All tests in `AlternateTableRowHtmlTabulatorTest` pass.
+* [X] The program is able to print the output of alternating 
 row color table algorithm to a HTML file. Use standard output 
 redirection when running the program.
 

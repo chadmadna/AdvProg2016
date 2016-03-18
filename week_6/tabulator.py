@@ -25,12 +25,12 @@ def main():
     htmlLayout = Layout(html_tabulator)
     for rows in range(2, 6):
         print(htmlLayout.tabulate(rows, WINNERS))
-    # textLayout = Layout(text_tabulator)
-    # for rows in range(2, 6):
-    #     print(textLayout.tabulate(rows, WINNERS))
-    # alternateLayout = Layout(alternate_table_row_color_html_tabulator)
-    # for rows in range(2, 6):
-    #     print(alternateLayout.tabulate(rows, WINNERS))
+    textLayout = Layout(text_tabulator)
+    for rows in range(2, 6):
+        print(textLayout.tabulate(rows, WINNERS))
+    alternateLayout = Layout(alternate_table_row_color_html_tabulator)
+    for rows in range(2, 6):
+        print(alternateLayout.tabulate(rows, WINNERS))
 
 
 class Layout:
@@ -100,7 +100,26 @@ def text_tabulator(rows, items):
 
 def alternate_table_row_color_html_tabulator(rows, items):
     # TODO Implement me!
-    return ""
+    columns, remainder = divmod(len(items), rows)
+    if remainder:
+        columns += 1
+    column = 0
+    row = 0
+    table = ['<table border="1">\n']
+    for item in items:
+        color = 'blue' if row % 2 else 'red'
+        if column == 0:
+            table.append("<tr bgcolor={}>".format(color))
+        table.append("<td>{}</td>".format(escape(str(item))))
+        column += 1
+        if column == columns:
+            table.append("</tr>\n")
+            row += 1
+        column %= columns
+    if table[-1][-1] != "\n":
+        table.append("</tr>\n")
+    table.append("</table>\n")
+    return "".join(table)
 
 if __name__ == "__main__":
     main()
