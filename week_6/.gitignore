@@ -1,0 +1,3 @@
+# Ignore files that can be generated in this exercise
+*.txt
+*.html
