@@ -110,8 +110,8 @@ Mandatory Checklist
 
 * [X] All tests in `ObservedTest` pass.
 * [X] Committed and pushed changes related to implementing `Observed` class.
-* [ ] All tests in `SliderModelTest` pass.
-* [ ] Committed and pushed changes related to implementing `SliderModel` class.
+* [X] All tests in `SliderModelTest` pass.
+* [X] Committed and pushed changes related to implementing `SliderModel` class.
 * [ ] Fixed `update()` in `LiveView` class.
 * [ ] Committed and pushed changes related to fixing `update()` in `LiveView` class.
 * [ ] Pinpointed the broken algorithm function in `tabulator.py`.

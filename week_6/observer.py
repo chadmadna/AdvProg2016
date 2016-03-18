@@ -62,12 +62,14 @@ class SliderModel(Observed):
     @property
     def value(self):
         # TODO Implement me!
-        pass
+        return self.__value
 
     @value.setter
     def value(self, value):
         # TODO Implement me!
-        pass
+        if self.__value != value:
+            self.__value = value
+            self.observers_notify()
 
     @property
     def minimum(self):
@@ -76,7 +78,9 @@ class SliderModel(Observed):
     @minimum.setter
     def minimum(self, value):
         # TODO Implement me!
-        pass
+        if self.__minimum != value:
+            self.__minimum = value
+            self.observers_notify()
 
     @property
     def maximum(self):
@@ -85,7 +89,9 @@ class SliderModel(Observed):
     @maximum.setter
     def maximum(self, value):
         # TODO Implement me!
-        pass
+        if self.__maximum != value:
+            self.__maximum = value
+            self.observers_notify()
 
 
 class AbstractView(metaclass=abc.ABCMeta):
