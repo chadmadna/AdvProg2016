@@ -116,7 +116,7 @@ class LiveView(AbstractView):
     def update(self, model):
         # TODO Fix me!
         tippingPoint = round(model.value * self.length /
-                             (model.minimum - model.maximum))
+                             (model.maximum - model.minimum))
         td = '<td style="background-color: {}">&nbsp;</td>'
         html = ['<table style="font-family: monospace" border="0"><tr>']
         html.extend(td.format("darkblue") * tippingPoint)

@@ -112,8 +112,8 @@ Mandatory Checklist
 * [X] Committed and pushed changes related to implementing `Observed` class.
 * [X] All tests in `SliderModelTest` pass.
 * [X] Committed and pushed changes related to implementing `SliderModel` class.
-* [ ] Fixed `update()` in `LiveView` class.
-* [ ] Committed and pushed changes related to fixing `update()` in `LiveView` class.
+* [X] Fixed `update()` in `LiveView` class.
+* [X] Committed and pushed changes related to fixing `update()` in `LiveView` class.
 * [ ] Pinpointed the broken algorithm function in `tabulator.py`.
 * [ ] Can demonstrate how to put a breakpoint. Please write the steps directly in the 
 source code as comments.
