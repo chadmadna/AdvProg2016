@@ -128,8 +128,8 @@ algorithm function.
 Additional Checklist
 ====================
 
-* [ ] All tests in `AlertViewTest` pass.
-* [ ] The program is able to print the output of `AlertView` 
+* [X] All tests in `AlertViewTest` pass.
+* [X] The program is able to print the output of `AlertView` 
 correctly to standard output. Use standard output redirection 
 when running the program.
 * [ ] All tests in `AlternateTableRowHtmlTabulatorTest` pass.
