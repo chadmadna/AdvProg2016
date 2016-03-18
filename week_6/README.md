@@ -108,8 +108,8 @@ of run configuration.
 Mandatory Checklist
 ===================
 
-* [ ] All tests in `ObservedTest` pass.
-* [ ] Committed and pushed changes related to implementing `Observed` class.
+* [X] All tests in `ObservedTest` pass.
+* [X] Committed and pushed changes related to implementing `Observed` class.
 * [ ] All tests in `SliderModelTest` pass.
 * [ ] Committed and pushed changes related to implementing `SliderModel` class.
 * [ ] Fixed `update()` in `LiveView` class.

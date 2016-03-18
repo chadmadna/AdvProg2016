@@ -38,14 +38,17 @@ class Observed:
 
     def observers_add(self, observer, *observers):
         # TODO Implement me!
-        pass
+        for observer in itertools.chain((observer,), observers):
+            self.__observers.add(observer)
+            observer.update(self)
 
     def observer_discard(self, observer):
         self.__observers.discard(observer)
 
     def observers_notify(self):
         # TODO Implement me!
-        pass
+        for observer in self.__observers:
+            observer.update(self)
 
 class SliderModel(Observed):
     def __init__(self, minimum, value, maximum):
