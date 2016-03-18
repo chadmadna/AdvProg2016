@@ -129,11 +129,13 @@ class AlertView(HistoryView):
 
     def __init__(self, threshold=40):
         # TODO Implement me!
-        pass
+        super().__init__()
+        self.threshold = threshold
 
     def update(self, model):
         # TODO Implement me!
-        pass
+        if model.value >= self.threshold:
+            self.data.append((model.value, time.time()))
 
 
 if __name__ == "__main__":
