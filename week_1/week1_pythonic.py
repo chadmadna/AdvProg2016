@@ -29,15 +29,15 @@ def main():
     svgFilename = "diagram.svg"
     htmlFilename = "diagram.html"
 
-    txtDiagram = create_diagram(DiagramFactory())
+    txtDiagram = create_diagram(DiagramFactory)
     txtDiagram.save(textFilename)
     print("Wrote:", textFilename)
 
-    svgDiagram = create_diagram(SvgDiagramFactory())
+    svgDiagram = create_diagram(SvgDiagramFactory)
     svgDiagram.save(svgFilename)
     print("Wrote:", svgFilename) 
 
-    htmlDiagram = create_diagram(HtmlDiagramFactory())
+    htmlDiagram = create_diagram(HtmlDiagramFactory)
     htmlDiagram.save(htmlFilename)
     print("Wrote:", htmlFilename)
 
