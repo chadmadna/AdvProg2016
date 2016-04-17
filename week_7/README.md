@@ -73,14 +73,14 @@ Mandatory Checklist
 Write your answers directly in the `week7.py`. For the implementation 
 part, write your implementation in the correct module.
 
-- [ ] Identify and write the shared data used in the concurrent simulation.
-- [ ] Identify and write the critical section(s) in the concurrent simulation. 
-- [ ] Based on what you have learned in the class (and previous courses), write 
+- [X] Identify and write the shared data used in the concurrent simulation.
+- [X] Identify and write the critical section(s) in the concurrent simulation. 
+- [X] Based on what you have learned in the class (and previous courses), write 
 down your suggestions to fix the problem present in the concurrent simulation.
-- [ ] Commit and push your writings to Git repo.
-- [ ] Implement your suggestions in the program.
-- [ ] Ensure the program is producing correct output.
-- [ ] Commit and push your fix to Git repo.
+- [X] Commit and push your writings to Git repo.
+- [X] Implement your suggestions in the program.
+- [X] Ensure the program is producing correct output.
+- [X] Commit and push your fix to Git repo.
 
 Additional Checklist
 --------------------

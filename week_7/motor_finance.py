@@ -14,6 +14,9 @@
 import collections
 import enum
 import time
+import threading
+
+BALANCE_LOCK = threading.Lock()
 
 
 class PaymentMethod(enum.Enum):
@@ -32,31 +35,33 @@ class Lender:
         self.ledger = collections.defaultdict(lambda: 0)
 
     def give_loan(self, customer, amount, method):
-        current_balance = self.balance
-        current_balance -= amount
+        with BALANCE_LOCK:
+            current_balance = self.balance
+            current_balance -= amount
 
-        # time.sleep simulates delay in transaction that might happened
-        # when using certain payment method
-        # DO NOT REMOVE
-        time.sleep(method.value)
-        self.balance = current_balance
-        self.ledger[customer] += amount
+            # time.sleep simulates delay in transaction that might happened
+            # when using certain payment method
+            # DO NOT REMOVE
+            time.sleep(method.value)
+            self.balance = current_balance
+            self.ledger[customer] += amount
 
     def receive_payment(self, customer, payment, method):
-        current_balance = self.balance
-        debt = self.ledger[customer]
+        with BALANCE_LOCK:
+            current_balance = self.balance
+            debt = self.ledger[customer]
 
-        if debt - payment < 0:
-            payment = payment + (debt - payment)
+            if debt - payment < 0:
+                payment = payment + (debt - payment)
 
-        # time.sleep simulates delay in transaction that might happened
-        # when using certain payment method
-        # DO NOT REMOVE
-        time.sleep(method.value)
-        debt -= payment
-        current_balance += payment
-        self.balance = current_balance
-        self.ledger[customer] = debt
+            # time.sleep simulates delay in transaction that might happened
+            # when using certain payment method
+            # DO NOT REMOVE
+            time.sleep(method.value)
+            debt -= payment
+            current_balance += payment
+            self.balance = current_balance
+            self.ledger[customer] = debt
 
     @property
     def customer_count(self):

@@ -30,13 +30,17 @@
 ##   Critical section in lender.give_loan():
 ##       def give_loan(self, customer, amount, method):
 ##           ...
-##           self.balance = current_balance
+##           current_balance = self.balance     # Read
+##           ...                                # Loan processing
+##           self.balance = current_balance     # Write
 ##           ...
 ##
 ##   Critical section in lender.receive_payment():
 ##       def receive_payment(self, customer, payment, method):
 ##           ...
-##           self.balance = current_balance
+##           current_balance = self.balance     # Read
+##           ...                                # Payment processing
+##           self.balance = current_balance     # Write
 ##           ...
 
 # 3. Write down your suggestions to fix the problem in the concurrent
@@ -57,6 +61,7 @@ import logging
 import random
 import threading
 from motor_finance import Customer, Lender, PaymentMethod
+from datetime import datetime
 
 NUM_OF_CUSTOMERS = 20
 BALANCE_AMOUNT = 10000
@@ -89,6 +94,7 @@ def create_customers(num):
 
 
 def simulate_sequential():
+    
     lender = Lender(BALANCE_AMOUNT)
     customers = create_customers(NUM_OF_CUSTOMERS)
     methods = list(PaymentMethod)
@@ -104,7 +110,7 @@ def simulate_sequential():
         pay_amount = random_amount()
         simulate_pay_installment(customer, lender,
                                  pay_amount, random.choice(methods))
-
+    
     logging.debug("Final balance: {}".format(str(lender.balance)))
     logging.debug("End sequential simulation")
 
