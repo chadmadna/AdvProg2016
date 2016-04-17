@@ -69,7 +69,9 @@
 ##    because of the overhead incurred by the locking
 ##    system and the minimal difference between the
 ##    serializable, concurrent implementation and the
-##    sequential implementation.
+##    sequential implementation. Most of the time
+##    elapsed is spent on the threads blocking while
+##    trying to acquire the lock.
 
 
 import logging
