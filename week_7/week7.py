@@ -54,7 +54,22 @@
 
 # Week 7 Additional Tasks:
 # Space for writing answer:
-# ...
+# Answer:
+#
+##    Simulation running time pre-fix:
+##        Concurrent: 1.08061 s
+##        Sequential: 7.44859 s
+##      Speedup: 6.89 x (faster)
+##    Simulation running time post-fix:
+##        Concurrent: 7.91162 s
+##        Sequential: 7.67759 s
+##      Speedup: 0.97 x (slower)
+##
+##    The fix made the concurrent simulation run slower
+##    because of the overhead incurred by the locking
+##    system and the minimal difference between the
+##    serializable, concurrent implementation and the
+##    sequential implementation.
 
 
 import logging
@@ -94,6 +109,8 @@ def create_customers(num):
 
 
 def simulate_sequential():
+    # Count start time
+    t_start = datetime.now()
     
     lender = Lender(BALANCE_AMOUNT)
     customers = create_customers(NUM_OF_CUSTOMERS)
@@ -114,8 +131,16 @@ def simulate_sequential():
     logging.debug("Final balance: {}".format(str(lender.balance)))
     logging.debug("End sequential simulation")
 
+    # Count end time and calculate elapsed time
+    t_end = datetime.now()
+    delta = t_end - t_start
+    logging.debug("Elapsed time: {} s".format(delta.total_seconds()))
+
 
 def simulate_concurrent():
+    # Count start time
+    t_start = datetime.now()
+    
     lender = Lender(BALANCE_AMOUNT)
     customers = create_customers(NUM_OF_CUSTOMERS)
     methods = list(PaymentMethod)
@@ -159,6 +184,11 @@ def simulate_concurrent():
 
     logging.debug("Final balance: {}".format(str(lender.balance)))
     logging.debug("End concurrent simulation")
+
+    # Count end time and calculate elapsed time
+    t_end = datetime.now()
+    delta = t_end - t_start
+    logging.debug("Elapsed time: {} s".format(delta.total_seconds()))
 
 
 if __name__ == "__main__":

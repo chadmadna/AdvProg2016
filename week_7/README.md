@@ -89,11 +89,11 @@ Write your answer in the provided space in `week7.py`. Please also include
 data that supports your answer, e.g. screenshot taken from profiler, by 
 adding it in the Git repo.
 
-- [ ] Measure running time of `simulate_sequential()` and 
+- [X] Measure running time of `simulate_sequential()` and 
 `simulate_concurrent()` **BEFORE** fixing the program. 
-- [ ] Measure running time of `simulate_sequential()` and 
+- [X] Measure running time of `simulate_sequential()` and 
 `simulate_concurrent()` **AFTER** fixing the program. 
-- [ ] Try to answer the following questions:
+- [X] Try to answer the following questions:
     - How much is the speedup achieved by `simulate_concurrent()` 
     compared to its sequential counterpart?
     - Does `simulate_concurrent()` run faster after you fixed 

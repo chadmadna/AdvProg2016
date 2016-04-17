@@ -44,7 +44,7 @@ class Lender:
             # DO NOT REMOVE
             time.sleep(method.value)
             self.balance = current_balance
-            self.ledger[customer] += amount
+        self.ledger[customer] += amount
 
     def receive_payment(self, customer, payment, method):
         with BALANCE_LOCK:
@@ -61,7 +61,7 @@ class Lender:
             debt -= payment
             current_balance += payment
             self.balance = current_balance
-            self.ledger[customer] = debt
+        self.ledger[customer] = debt
 
     @property
     def customer_count(self):
