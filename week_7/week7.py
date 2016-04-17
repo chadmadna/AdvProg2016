@@ -15,16 +15,42 @@
 #
 # 1. Identify the shared data used in the concurrent simulation.
 # Answer: (write as Python comments)
-# ...
+#
+##   i) The list 'methods' is shared among threads as read-only data.
+##  ii) The variable Lender.balance in 'lender' is shared among threads
+##      as read and write data.
 
 # 2. Identify the critical section(s) in the concurrent simulation.
-# Answer: (write as Python comments)
-# ...
+# Answer:
+#
+##   The methods lender.give_loan() in simulate_loan() and lender.receive_payment()
+##   in simulate_pay_installment() are critical sections in the simulation because
+##   both methods modify and read lender.balance as shared data.
+##
+##   Critical section in lender.give_loan():
+##       def give_loan(self, customer, amount, method):
+##           ...
+##           self.balance = current_balance
+##           ...
+##
+##   Critical section in lender.receive_payment():
+##       def receive_payment(self, customer, payment, method):
+##           ...
+##           self.balance = current_balance
+##           ...
 
 # 3. Write down your suggestions to fix the problem in the concurrent
 # simulation.
 # Answer: (write as Python comments)
-# ...
+#
+##   i) Implementing a thread-level locking system for all threads that
+##      modify the shared data. Lock acquisition and release calls will
+##      be placed around threading calls in week7.py.
+##      
+##  ii) Implementing a method-level locking system for all methods that
+##      modify the shared data. Lock acquisition and release calls will
+##      be placed inside methods in motor_finance.py, surrounding the
+##      critical sections of each method that modify the shared data.
 
 # Week 7 Additional Tasks:
 # Space for writing answer:
