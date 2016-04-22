@@ -28,7 +28,9 @@ import feed
 #   'week8.py' runtime: 82812 ms
 #   'week8_threading.py' runtime: 13739 ms
 #   'week8_future.py' runtime: 15739 ms
-
+#   Speedups:
+#       Queues and threading: 6.03x
+#       Futures and threading: 5.26x
 
 TITLE = "What's New - No Concurrency"
 
