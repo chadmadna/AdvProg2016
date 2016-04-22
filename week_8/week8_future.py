@@ -16,6 +16,7 @@ import argparse
 import concurrent.futures
 import multiprocessing
 import webbrowser
+import os
 
 import feed
 
@@ -25,7 +26,7 @@ TITLE = "What's New - Futures"
 def main():
     limit, concurrency = handle_commandline()
     print("Starting...")
-    filename = "whatsnew.dat"
+    filename =  os.path.join(os.path.dirname(__file__), "whatsnew.dat")
     futures = set()
 
     with concurrent.futures.ThreadPoolExecutor(
