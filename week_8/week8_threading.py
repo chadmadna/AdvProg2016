@@ -61,14 +61,17 @@ def create_threads(limit, jobs, results, concurrency):
 
 def worker(limit, jobs, results):
     while True:
-        feed_source = jobs.get()
-        ok, result = feed.read(feed_source, limit)
+        try:
+            feed_source = jobs.get()
+            ok, result = feed.read(feed_source, limit)
 
-        if not ok:
-            print(result)
-        elif result is not None:
-            print("Read {}".format(result[0][4:-6]))
-            results.put(result)
+            if not ok:
+                print(result)
+            elif result is not None:
+                print("Read {}".format(result[0][4:-6]))
+                results.put(result)
+        finally:
+            jobs.task_done()
 
 
 def add_jobs(filename, jobs):
