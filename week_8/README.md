@@ -90,7 +90,7 @@ part, write your codes in the correct module.
 - [X] Setup a new virtual environment for week 8 exercise.
 - [X] Successfully installed `feedparser` package in virtual environment.
 - [X] Properly 'ignored' virtual environment directory from being tracked by Git.
-- [ ] Implement the threads creation in `week8_threading.py`
+- [X] Implement the threads creation in `week8_threading.py`
 - [ ] Identify the bug in `week8_threading.py`. Hint: Try using PyCharm concurrency diagram and 
 read `queue` module documentation carefully, especially regarding `get()` function!
 - [ ] Write down the cause of the bug in the provided space in `week8.py`.

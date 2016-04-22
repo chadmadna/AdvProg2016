@@ -53,7 +53,10 @@ def handle_commandline():
 def create_threads(limit, jobs, results, concurrency):
     # TODO Implement me!
     # Do not forget to remove `pass` statement!
-    pass
+    for i in range(concurrency):
+        thread = threading.Thread(target=worker, args=(limit, jobs, results))
+        thread.daemon = True
+        thread.start()
 
 
 def worker(limit, jobs, results):
