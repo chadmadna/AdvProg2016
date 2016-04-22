@@ -25,8 +25,10 @@ import feed
 
 # Week 8 Additional Tasks
 # Spaces for writing answer:
-# ...
-# ...
+#   'week8.py' runtime: 82812 ms
+#   'week8_threading.py' runtime: 13739 ms
+#   'week8_future.py' runtime: 15739 ms
+
 
 TITLE = "What's New - No Concurrency"
 
