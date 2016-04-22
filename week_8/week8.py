@@ -20,7 +20,8 @@ import feed
 # Week 8 Mandatory Tasks
 # 1. What is the cause of the bug in week8_threading.py?
 # Answer (write as Python comments):
-# ...
+#   jobs.join() blocks because jobs.task_done() was not called for every
+#   feed_source that is put() in the jobs queue.
 
 # Week 8 Additional Tasks
 # Spaces for writing answer:
