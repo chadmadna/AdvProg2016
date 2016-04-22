@@ -87,9 +87,9 @@ Mandatory Checklist
 Write your written answers in the `week8.py`. For the implementation/coding 
 part, write your codes in the correct module.
 
-- [ ] Setup a new virtual environment for week 8 exercise.
-- [ ] Successfully installed `feedparser` package in virtual environment.
-- [ ] Properly 'ignored' virtual environment directory from being tracked by Git.
+- [X] Setup a new virtual environment for week 8 exercise.
+- [X] Successfully installed `feedparser` package in virtual environment.
+- [X] Properly 'ignored' virtual environment directory from being tracked by Git.
 - [ ] Implement the threads creation in `week8_threading.py`
 - [ ] Identify the bug in `week8_threading.py`. Hint: Try using PyCharm concurrency diagram and 
 read `queue` module documentation carefully, especially regarding `get()` function!
