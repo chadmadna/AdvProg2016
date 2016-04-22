@@ -108,7 +108,7 @@ Write your answer in the provided space in `week8.py`. Please also include
 data that supports your answer, e.g. screenshot taken from profiler, by 
 adding it in the Git repository.
 
-- [ ] All programming works related to week 8 exercise are done in virtual environment.
+- [X] All programming works related to week 8 exercise are done in virtual environment.
 - [ ] Measure running time of `week8.py`, `week8_thread.py`, and `week8_future.py`.
 - [ ] Compare the running time of `week8.py` with one of multi-threaded version 
 and try to answer the following questions:
