@@ -97,9 +97,9 @@ read `queue` module documentation carefully, especially regarding `get()` functi
 - [X] Commit your writing to Git repository.
 - [X] Fix the bug in `week8_threading.py`.
 - [X] Commit and push your work realted to `week8_threading.py` to Git repository.
-- [ ] Complete the implementation of `week8_future.py`.
-- [ ] Run `week8_future.py` and ensure it is working properly.
-- [ ] Commit and push your work related to `week8_future.py` to Git repository.
+- [X] Complete the implementation of `week8_future.py`.
+- [X] Run `week8_future.py` and ensure it is working properly.
+- [X] Commit and push your work related to `week8_future.py` to Git repository.
 
 Additional Checklist
 --------------------

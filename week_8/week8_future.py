@@ -30,18 +30,15 @@ def main():
 
     with concurrent.futures.ThreadPoolExecutor(
             max_workers=concurrency) as executor:
+
         # TODO Fix me!
         # BEGIN Write correct implementation here
-
-
-
-
-
-
-
-
-
-
+        for feed_source in feed.iter(filename):
+            future = executor.submit(feed.read, feed_source, limit)
+            futures.add(future)
+        done, filename, canceled = process(futures)
+        if canceled:
+            executor.shutdown()
         # END
 
     print("Read {}/{} feeds using {} threads{}".format(done,
@@ -93,7 +90,26 @@ def process(futures):
 def wait_for(futures):
     # TODO Implement me!
     # Do not forget to remove `pass` statement!
-    pass
+    canceled = False
+    results = []
+    try:
+        for future in concurrent.futures.as_completed(futures):
+            err = future.exception()
+            if err is None:
+                ok, result = future.result()
+                if not ok:
+                    print(result)
+                elif result is not None:
+                    print("Read {}".format(result[0][4:-6]))
+                results.append((ok, result))
+            else:
+                raise err # Unanticipated
+    except KeyboardInterrupt:
+        print("canceling...")
+        canceled = True
+        for future in futures:
+            future.cancel()
+    return canceled, results
 
 if __name__ == "__main__":
     main()
