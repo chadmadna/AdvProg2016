@@ -110,7 +110,7 @@ adding it in the Git repository.
 
 - [X] All programming works related to week 8 exercise are done in virtual environment.
 - [X] Measure running time of `week8.py`, `week8_thread.py`, and `week8_future.py`.
-- [ ] Compare the running time of `week8.py` with one of multi-threaded version 
+- [X] Compare the running time of `week8.py` with one of multi-threaded version 
 and try to answer the following questions:
     - How much is the speedup achieved by using multi-threaded approach compared 
     to the non-concurrent approach?
