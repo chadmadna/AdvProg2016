@@ -24,10 +24,10 @@ web-based chatting application.
 Mandatory Checklist
 -------------------
 
-- [ ] run at least two libraries from any resources/library about websocket.
-- [ ] choose one of them to have a simple web-based chatting. You can use an already prepared example by the author.
-- [ ] prettify it with nice layout (css) or have scroll-able frame, etc if needed.
-- [ ] name the main file as `week9.py` and ensure it is working properly from several running browser to simulate the chatting activities.
+- [X] run at least two libraries from any resources/library about websocket.
+- [X] choose one of them to have a simple web-based chatting. You can use an already prepared example by the author.
+- [X] prettify it with nice layout (css) or have scroll-able frame, etc if needed.
+- [X] name the main file as `week9.py` and ensure it is working properly from several running browser to simulate the chatting activities.
 - [ ] write some notes with your own words that explain how the web-based chat works. Write it as a markdown text file in your repository. (just like this README.md file). It should be equivalent to at least one page A4 printed.
 - [ ] commit and push your mandatory work related to `week9.py` to your own Git repository. Don't forget to add and include all related files and required library.
 - [ ] show your works, by running it on a fresh clone from the repository

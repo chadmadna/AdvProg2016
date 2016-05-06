@@ -1,0 +1,62 @@
+body {
+    font: 16px Helvetica;
+    background-image: url('bg2.png');
+}
+
+#log { 
+    height: 200px;
+    border: 2px solid #ccc;
+    font: 16px/26px Helvetica;
+    overflow: auto;
+    background-color: white;
+    padding: 5px;
+}
+
+#overlay {
+    width: 600px;
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    border: 3px solid #ddd;
+    background-color: #ddd;
+}
+
+.uname {
+    color: rgb(176,0,0);
+}
+
+#broadcast_data {
+	width: 99%;
+	height: 80px;
+	text-align: left;
+	font-size: 16px;
+	resize: none;
+}
+
+#windowbar {
+	position: relative;
+	padding: 7px;
+	margin: 0 auto;
+	height: 15px;
+	background-color: #002a92;
+}
+
+.title {
+	position: relative;
+	bottom: 2px;
+	left: 2px;
+	font-size: 8;
+	color: white;
+}
+
+/* tabs */
+
+	.etabs { margin: 0; padding: 0; }
+    .tab { display: inline-block; zoom:1; background: #eee; border: solid 1px #999; border-bottom: none; -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; }
+    .tab a { font-size: 14px; line-height: 2em; display: block; padding: 0 10px; outline: none; text-decoration: none; color: black;}
+    .tab a:hover { text-decoration: none; }
+    .tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #666; }
+    .tab a.active { font-weight: bold; }
+    .tab a:visited { text-decoration: none; color: black;}
+    .tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }
+    .panel-container { margin-bottom: 10px; }
