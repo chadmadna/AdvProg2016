@@ -1,0 +1,184 @@
+@font-face {
+	font-family: 'WINMenu';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/WINMenu.woff') format('woff');
+}
+@font-face {
+	font-family: 'WINDialog';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/WINDialog.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'PragmataFlash12';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/PragmataFlash12.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'micross';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/micross.woff') format('woff');
+}
+
+/* Optional render settings for that '95 aesthetics doe */
+* {
+	-webkit-font-smoothing: none;
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor;
+	
+	font: 11px micross;
+}
+
+body {
+    background-image: url('../img/bg2.png');
+}
+
+#log { 
+	image-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+    height: 200px;
+    border-bottom: 2px solid #FFF;
+	border-right: 2px solid #FFF;
+	border-left: 2px solid #7B7F83;
+	border-top: 2px solid #7B7F83;
+    font: 16px/26px Helvetica;
+    overflow: auto;
+    background-color: white;
+    padding: 0px 5px;
+    margin: 10px;
+}
+
+#overlay {
+    width: 600px;
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    background-color: #ddd;
+}
+
+.window {
+	background: #C3C7CB;
+	border-top: 1px solid #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #7B7F83;
+	border-bottom: 1px solid #7B7F83;
+	box-shadow: 1px 0 #000000, 0 1px #000000, 0 -1px #C3C7CB, -1px 0 #C3C7CB;
+	padding: 2px 3px;
+}
+
+.uname {
+    color: rgb(176,0,0);
+}
+
+#broadcast_data {
+	width: 99%;
+	height: 80px;
+	text-align: left;
+	font-size: 16px;
+	resize: none;
+}
+
+#windowbar {
+	position: relative;
+	margin: 0 auto;
+	height: 20px;
+	background-color: #002a92;
+}
+
+#icon {
+	margin: 4px;
+}
+
+.title {
+	position: absolute;
+	font: 17px WINDialog;
+	color: white;
+	margin: 2px;
+}
+
+#windowwrap {
+	padding: 5px;
+}
+
+input[type=submit] {
+	font-size: 11px;
+	background: #C3C7CB;
+	box-shadow: inset -1px 0 #757575, 0 0 0 1px #000, 1px 0 #000;
+	border-top: 1px solid #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	text-align: center;
+	display: inline-block;
+	margin-right: 8px;
+}
+
+/* tabs */
+
+	.etabs { 
+		margin: 0; 
+		padding: 0; 
+	}
+	
+    .tab { 
+	    display: inline-block; 
+	    zoom:1; 
+	    background: #eee; 
+	    border: solid 1px #999; 
+	    border-bottom: none; 
+	    -moz-border-radius: 4px 4px 0 0; 
+	    -webkit-border-radius: 4px 4px 0 0;
+	    font-family: micross; 
+	}
+	
+    .tab a { 
+	    font-size: 14px; 
+	    line-height: 2em; 
+	    display: block; 
+	    padding: 0 10px; 
+	    outline: none; 
+	    text-decoration: none; 
+	    color: black;
+	}
+	
+    .tab a:hover { 
+	    text-decoration: none; 
+	}
+	
+    .tab.active { 
+	    background: #fff; 
+	    padding-top: 6px; 
+	    position: relative; 
+	    top: 1px; 
+	    border-color: #666; 
+	}
+	
+    .tab a.active { 
+	    font-weight: bold; 
+	}
+	
+    .tab a:visited { 
+	    text-decoration: none; 
+	    color: black;
+	}
+	
+    .tab-container .panel-container { 
+	    background: #fff; 
+	    border: solid #666 1px; 
+	    padding: 10px; 
+	    -moz-border-radius: 0 4px 4px 4px; 
+	    -webkit-border-radius: 0 4px 4px 4px; 
+	}
+	
+    .panel-container { 
+	    margin-bottom: 10px;
+	}

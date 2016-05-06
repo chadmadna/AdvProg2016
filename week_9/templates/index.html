@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>vaporchat</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/easytabs.js') }}"></script>
@@ -92,69 +92,72 @@
 <body>
 <div id="wrapper">
 	
-    <div id="overlay">
+    <div id="overlay" class='window'>
 	    
 	    <div id='windowbar'>
-			<img src="{{ url_for('static', filename='icon.png') }}">
+			<img id='icon' src="{{ url_for('static', filename='img/icon2.gif') }}">
 		    <span class='title'>VaporChat</span>
 	    </div>
+	    
+	    <div id='windowwrap'>
 
-        <form id="username" method="POST" action='#'>
-            <input type="text" name="username_data" id="username_data" placeholder="Username">
-            <input type="submit" value="Update">
-        </form>
-
-        <div id="log"></div>
-		
-		<!-- TABS -->
-		<div id="tab-container" class='tab-container'>
-		<ul class='etabs'>
-		   <li class='tab'><a href="#bc">Broadcast</a></li>
-		   <li class='tab'><a href="#tabs1-js">Stuff</a></li>
-		   <li class='tab'><a href="#tabs1-css">More stuff</a></li>
-		</ul>
-		<div class='panel-container'>
+	        <form id="username" method="POST" action='#'>
+	            <input type="text" name="username_data" id="username_data" placeholder="Username">
+	            <input type="submit" value="Update">
+	        </form>
+	
+	        <div id="log"></div>
 			
-			<div id="bc">
-				<form id="broadcast" method="POST" action='#'>
-		            <textarea name="broadcast_data" id="broadcast_data" placeholder="Enter your message here!"></textarea>
-		            <input type="submit" value="Broadcast">
-		        </form>
+			<!-- TABS -->
+			<div id="tab-container" class='tab-container'>
+			<ul class='etabs'>
+			   <li class='tab'><a href="#bc">Broadcast</a></li>
+			   <li class='tab'><a href="#tabs1-js">Stuff</a></li>
+			   <li class='tab'><a href="#tabs1-css">More stuff</a></li>
+			</ul>
+			<div class='panel-container'>
+				
+				<div id="bc">
+					<form id="broadcast" method="POST" action='#'>
+			            <textarea name="broadcast_data" id="broadcast_data" placeholder="Enter your message here!"></textarea>
+			            <input type="submit" value="Broadcast">
+			        </form>
+				</div>
+								
+				<div id="tabs1-js">
+					<h2>JS for these tabs</h2>
+				</div>
+				
+				<div id="tabs1-css">
+					<h2>CSS for these tabs</h2>
+				</div>
 			</div>
-							
-			<div id="tabs1-js">
-				<h2>JS for these tabs</h2>
-			</div>
-			
-			<div id="tabs1-css">
-				<h2>CSS for these tabs</h2>
-			</div>
-		</div>
-
-        <form id="join" method="POST" action='#'>
-            <input type="text" name="join_room" id="join_room" placeholder="Room Name">
-            <input type="submit" value="Join Room">
-        </form>
-
-        <form id="leave" method="POST" action='#'>
-            <input type="text" name="leave_room" id="leave_room" placeholder="Room Name">
-            <input type="submit" value="Leave Room">
-        </form>
-
-        <form id="send_room" method="POST" action='#'>
-            <input type="text" name="room_name" id="room_name" placeholder="Room Name">
-            <input type="text" name="room_data" id="room_data" placeholder="Message">
-            <input type="submit" value="Send to Room">
-        </form>
-
-        <form id="close" method="POST" action="#">
-            <input type="text" name="close_room" id="close_room" placeholder="Room Name">
-            <input type="submit" value="Close Room">
-        </form>
-
-        <form id="disconnect" method="POST" action="#">
-            <input type="submit" value="Disconnect">
-        </form>
+	
+	        <form id="join" method="POST" action='#'>
+	            <input type="text" name="join_room" id="join_room" placeholder="Room Name">
+	            <input type="submit" value="Join Room">
+	        </form>
+	
+	        <form id="leave" method="POST" action='#'>
+	            <input type="text" name="leave_room" id="leave_room" placeholder="Room Name">
+	            <input type="submit" value="Leave Room">
+	        </form>
+	
+	        <form id="send_room" method="POST" action='#'>
+	            <input type="text" name="room_name" id="room_name" placeholder="Room Name">
+	            <input type="text" name="room_data" id="room_data" placeholder="Message">
+	            <input type="submit" value="Send to Room">
+	        </form>
+	
+	        <form id="close" method="POST" action="#">
+	            <input type="text" name="close_room" id="close_room" placeholder="Room Name">
+	            <input type="submit" value="Close Room">
+	        </form>
+	
+	        <form id="disconnect" method="POST" action="#">
+	            <input type="submit" value="Disconnect">
+	        </form>
+	    </div>
     </div>
 </div>    
 </body>
