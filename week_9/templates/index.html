@@ -4,90 +4,11 @@
     <title>vaporchat</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/easytabs.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/hashchange.js') }}"></script>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function(){
-	        // js for easytabs
-	        $('#tab-container').easytabs();
-	        
-            namespace = '/test'; // change to an empty string to use the global namespace
-
-            // the socket.io documentation recommends sending an explicit package upon connection
-            // this is specially important when using the global namespace
-            var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
-
-            var username = 'Guest';
-            
-
-            // event handler for server sent data
-            // the data is displayed in the "Received" section of the page
-            // 'Received #' + msg.count + ': ' + 
-            socket.on('my response', function(msg) {
-                $('#log').append(msg.data + '<br>');
-                $('#log').scrollTop($('#log').prop('scrollHeight'));
-            });
-
-            socket.on('chat', function(msg) {
-                $('#log').append('<span class="uname">[' + username + 
-                    ']</span>: ' + msg.data + '<br>');
-                    $('#log').scrollTop($('#log').prop('scrollHeight'));
-            });
-
-            socket.on('change username', function(msg) {
-                var msg_log = '<span class="uname">[' + msg.old_name + ']</span>' +
-                            ' has changed its name into ' +
-                            '<span class="uname">[' + msg.new_name + ']</span>!<br>';
-                $('#log').append(msg_log);
-                $('#log').scrollTop($('#log').prop('scrollHeight'));
-            });
-
-            // event handler for new connections
-            socket.on('connect', function(msg) {
-                socket.emit('my connect event', {data: 'Connected to chat.'});
-            });
-
-            // handlers for the different forms in the page
-            // these send data to the server in a variety of ways
-            $('form#emit').submit(function(event) {
-                socket.emit('my event', {data: $('#emit_data').val()});
-                return false;
-            });
-            $('form#broadcast').submit(function(event) {
-                socket.emit('my broadcast event', {data: $('#broadcast_data').val()});
-                return false;
-            });
-            $('form#join').submit(function(event) {
-                socket.emit('join', {room: $('#join_room').val()});
-                return false;
-            });
-            $('form#leave').submit(function(event) {
-                socket.emit('leave', {room: $('#leave_room').val()});
-                return false;
-            });
-            $('form#send_room').submit(function(event) {
-                socket.emit('my room event', {room: $('#room_name').val(), data: $('#room_data').val()});
-                return false;
-            });
-            $('form#close').submit(function(event) {
-                socket.emit('close room', {room: $('#close_room').val()});
-                return false;
-            });
-            $('form#disconnect').submit(function(event) {
-                socket.emit('disconnect request');
-                return false;
-            });
-            $('form#username').submit(function(event) {
-                var new_name = $('input#username_data').val()
-                socket.emit('change username', {
-                    old_name: username, new_name: new_name
-                });
-                username = new_name;
-                return false;
-            });
-        });
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -97,13 +18,22 @@
 	    <div id='windowbar'>
 			<img id='icon' src="{{ url_for('static', filename='img/icon2.gif') }}">
 		    <span class='title'>VaporChat</span>
+		    <div class="windowTitleBarButtons">
+			    <div class="windowTitleBarMinimize"></div>
+			    <div class="windowTitleBarMaximize"></div>
+			    <div class="windowTitleBarClose"></div>
+		    </div>
 	    </div>
 	    
 	    <div id='windowwrap'>
 
 	        <form id="username" method="POST" action='#'>
-	            <input type="text" name="username_data" id="username_data" placeholder="Username">
-	            <input type="submit" value="Update">
+		        <label for='username_data'>Username:</label>
+	            <input type="text" name="username_data" id="username_data" placeholder="Guest"
+	            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+	            <div class="dialogBoxButtons"><span>
+		            <input class="button" type="submit" value="Update">
+	            </span></div>
 	        </form>
 	
 	        <div id="log"></div>
@@ -111,51 +41,53 @@
 			<!-- TABS -->
 			<div id="tab-container" class='tab-container'>
 			<ul class='etabs'>
-			   <li class='tab'><a href="#bc">Broadcast</a></li>
-			   <li class='tab'><a href="#tabs1-js">Stuff</a></li>
-			   <li class='tab'><a href="#tabs1-css">More stuff</a></li>
+			   <li class='tab'><a href="#bc-chat">Broadcast</a></li>
+			   <li class='tab'><a href="#room-chat">Room Chat</a></li>
+			   <li class='tab'><a href="#rooms">Rooms</a></li>
 			</ul>
 			<div class='panel-container'>
 				
-				<div id="bc">
+				<div id="bc-chat">
 					<form id="broadcast" method="POST" action='#'>
-			            <textarea name="broadcast_data" id="broadcast_data" placeholder="Enter your message here!"></textarea>
-			            <input type="submit" value="Broadcast">
+			            <textarea name="broadcast_data" id="broadcast_data" placeholder="Send message.."></textarea>
+			            <div class="dialogBoxButtons"><span>
+				            <input type="submit" value="Send">
+			            </span></div>
 			        </form>
 				</div>
 								
-				<div id="tabs1-js">
-					<h2>JS for these tabs</h2>
+				<div id="room-chat">
+					<form id="send_room" method="POST" action='#'>
+			            <input type="text" name="room_name" id="room_name" placeholder="Room Name">
+			            <textarea type="text" name="room_data" id="room_data" placeholder="Send message.."></textarea>
+			            <div class="dialogBoxButtons"><span>
+				            <input type="submit" value="Send">
+			            </span></div>
+			        </form>
 				</div>
 				
-				<div id="tabs1-css">
-					<h2>CSS for these tabs</h2>
+				<div id="rooms">
+					<form id="join" method="POST" action='#'>
+			            <input type="text" name="join_room" id="join_room" placeholder="Room Name">
+			            <input type="submit" value="Join Room">
+			        </form>
+			
+			        <form id="leave" method="POST" action='#'>
+			            <input type="text" name="leave_room" id="leave_room" placeholder="Room Name">
+			            <input type="submit" value="Leave Room">
+			        </form>
+			
+			        <form id="close" method="POST" action="#">
+			            <input type="text" name="close_room" id="close_room" placeholder="Room Name">
+			            <input type="submit" value="Close Room">
+			        </form>
 				</div>
 			</div>
-	
-	        <form id="join" method="POST" action='#'>
-	            <input type="text" name="join_room" id="join_room" placeholder="Room Name">
-	            <input type="submit" value="Join Room">
-	        </form>
-	
-	        <form id="leave" method="POST" action='#'>
-	            <input type="text" name="leave_room" id="leave_room" placeholder="Room Name">
-	            <input type="submit" value="Leave Room">
-	        </form>
-	
-	        <form id="send_room" method="POST" action='#'>
-	            <input type="text" name="room_name" id="room_name" placeholder="Room Name">
-	            <input type="text" name="room_data" id="room_data" placeholder="Message">
-	            <input type="submit" value="Send to Room">
-	        </form>
-	
-	        <form id="close" method="POST" action="#">
-	            <input type="text" name="close_room" id="close_room" placeholder="Room Name">
-	            <input type="submit" value="Close Room">
-	        </form>
-	
-	        <form id="disconnect" method="POST" action="#">
-	            <input type="submit" value="Disconnect">
+		
+	        <form id="disconnect" method="POST" action="#" align="right">
+	            <div class="dialogBoxButtons"><span>
+		            <input type="submit" value="Disconnect">
+	            </span></div>
 	        </form>
 	    </div>
     </div>

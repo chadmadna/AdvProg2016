@@ -55,34 +55,24 @@ def index():
     return render_template('index.html')
 
 
-@socketio.on('my event', namespace='/test')
-def test_message(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('chat',
-         {'data': message['data'], 'count': session['receive_count']})
-
-
 @socketio.on('my broadcast event', namespace='/test')
 def test_broadcast_message(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('chat',
-         {'data': message['data'], 'count': session['receive_count']},
+         {'data': message['data'], 'user': message['user']},
          broadcast=True)
 
 
 @socketio.on('join', namespace='/test')
 def join(message):
     join_room(message['room'])
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my response',
-         {'data': 'In rooms: ' + ', '.join(rooms()),
-          'count': session['receive_count']})
+    emit('join',
+         {'user': message['user'], 'room': message['room']},
+         broadcast=True)
 
 
 @socketio.on('leave', namespace='/test')
 def leave(message):
     leave_room(message['room'])
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my response',
          {'data': 'In rooms: ' + ', '.join(rooms()),
           'count': session['receive_count']})
@@ -90,43 +80,40 @@ def leave(message):
 
 @socketio.on('close room', namespace='/test')
 def close(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my response', {'data': 'Room ' + message['room'] + ' is closing.',
-                         'count': session['receive_count']},
+    emit('my response', {'data': 'Room ' + message['room'] + ' is closing.'},
          room=message['room'])
     close_room(message['room'])
 
 
 @socketio.on('my room event', namespace='/test')
 def send_room_message(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('chat',
-         {'data': message['data'], 'count': session['receive_count']},
-         room=message['room'])
+    emit('room chat',
+         {'data': message['data'], 'user': message['user'],
+          'room': message['room']}, room=message['room'])
 
 
 @socketio.on('disconnect request', namespace='/test')
 def disconnect_request():
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my response',
-         {'data': 'Disconnected!', 'count': session['receive_count']})
+         {'data': 'Disconnected!'})
     disconnect()
 
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
-    emit('my response', {'data': 'Connecting..', 'count': 0})
+    emit('my response', {'data': 'Connecting..'})
 
 
 @socketio.on('disconnect', namespace='/test')
 def test_disconnect():
     print('Client disconnected', request.sid)
 
+
 @socketio.on('my connect event', namespace='/test')
 def test_connect_message(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my response',
-        {'data': message['data'], 'count': session['receive_count']})
+        {'data': message['data']})
+
 
 @socketio.on('change username', namespace='/test')
 def change_username(message):
@@ -134,6 +121,7 @@ def change_username(message):
     new_name = message['new_name']
     emit('change username', {
         'old_name': old_name, 'new_name': new_name}, broadcast=True)
+   
 
 
 if __name__ == '__main__':
