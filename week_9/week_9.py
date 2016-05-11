@@ -93,10 +93,10 @@ def send_room_message(message):
 
 
 @socketio.on('disconnect request', namespace='/test')
-def disconnect_request():
-    emit('my response',
-         {'data': 'Disconnected!'})
-    disconnect()
+def disconnect_request(message):
+	emit('disconnect notification', {'user': message['user']}, broadcast=True)
+	emit('my response', {'data': 'Disconnected!'})
+	disconnect()
 
 
 @socketio.on('connect', namespace='/test')
@@ -106,13 +106,13 @@ def test_connect():
 
 @socketio.on('disconnect', namespace='/test')
 def test_disconnect():
-    print('Client disconnected', request.sid)
+	print('Client disconnected', request.sid)
 
 
 @socketio.on('my connect event', namespace='/test')
 def test_connect_message(message):
-    emit('my response',
-        {'data': message['data']})
+	emit('my response', {'data': message['data']})
+	emit('connect notification', {'user': message['user']}, broadcast=True)
 
 
 @socketio.on('change username', namespace='/test')
