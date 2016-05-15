@@ -42,9 +42,9 @@ Please include data that supports your answer, e.g. screenshot of several browse
     * let the server frequently send the user of nice/valuable quote.
     * let the server send you latest news or specific news.
     * let the server inform the number of active chatters.
-- [ ] Write additional notes that explain how did you modify the example to add the new functionality. Write your notes as a markdown file in you repository. It should be equivalent to at least two page A4 printed.
-- [ ] Commit and push your additional works to your own Git repository.
-- [ ] Show your works, by running it on a fresh clone from the repository
+- [X] Write additional notes that explain how did you modify the example to add the new functionality. Write your notes as a markdown file in you repository. It should be equivalent to at least two page A4 printed.
+- [X] Commit and push your additional works to your own Git repository.
+- [X] Show your works, by running it on a fresh clone from the repository
 
 - - -
 

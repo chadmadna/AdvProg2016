@@ -1,5 +1,5 @@
 Exercise 09: Websocket
-==========================================================
+======================
 
 IKI20810 - Advanced Programming @ Faculty of Computer Science
 Universitas Indonesia, Even Semester 2015/2016
@@ -110,3 +110,100 @@ Example:
 	                      {'data': 'Server generated event', 'count': count},
 	                      namespace='/test')
 	```
+
+About the username functionality
+--------------------------------
+The original example app provided by Miguel Grinberg in his Github repo for 
+Flask-SocketIO demonstrated only fundamental functions his module, and so it did
+not include a mechanism of identifying users.
+
+In my modified app, I added a mechanism for assigning yourself a username from the 
+client-side application. Initially, all users connect as guest. The client will 
+then check the cookies for a saved username. If found, the user will proceed with 
+that username. Else, they proceed as a guest with the username 'Guest'. The 
+username is passed back and forth from the client to the server on events that 
+requires the user to be identified in the chatroom, such as connects, room messages,
+broadcast messages, room joins, and username changes.
+
+#### Storing and changing username
+
+The client app provides a form field to submit a new username if the user wants to
+change username. Online users can change their username and the client app will 
+store it in the form of cookies. Changes are stored locally in the client's machine
+as cookies, instead of being stored in the server. 
+
+```javascript
+$('form#username').submit(function(event) {
+    var new_name = $('input#username_data').val();
+    // ignore same name or empty field
+    if (new_name.length == 0 || new_name == username) {	
+    return false;
+    }
+    // emit 'change username' event to server
+    socket.emit('change username', {
+    old_name: username, 
+    new_name: new_name
+    });
+    // set new username and store to cookie
+    username = new_name;
+    $.cookie("username", username)
+    return false;
+});
+```
+
+When a user changes their username, the change is broadcasted to all members of the
+chat. The client emits a `'change username'` event to the server, which will be
+handled by the server by emitting a a broadcast message to all connected clients.
+
+```python
+@socketio.on('change username', namespace='/test')
+def change_username(message):
+    old_name = message['old_name']
+    new_name = message['new_name']
+    emit('change username', {
+		 'old_name': old_name, 'new_name': new_name}, broadcast=True)
+```
+
+When the client receives the broadcasted `emit`, 
+
+
+When users visit the page again, the client app will try to find the exisiting cookie 
+and retrieve the username. If the client fails to do so, the user will then proceed 
+as 'Guest', as if they have never changed their username.
+
+```javascript
+$(document).ready(function(){
+    // set and get username via cookies on document ready
+    var cookie = $.cookie("username");
+    if (cookie == null) {	// cookie not found
+        username = 'Guest';
+    } else {
+        username = cookie;
+        $('input#username_data').val(username)
+    }
+	...
+```
+
+#### Broadcasting username
+
+Usernames are broadcasted on user events such as:
+- broadcast messages, 
+- room messages, 
+- joining a room, 
+- leaving a room, 
+- connects, 
+- disconnects, 
+- and username changes.
+
+The username will be provided in a colored font on the chat logs, as shown by the code
+below that prints the chat messages:
+
+```javascript
+socket.on('chat', function(msg) {
+// highlight username
+$('#log').append('<span class="uname">' + msg.user + 
+				 '</span>: ' + msg.data + '<br>');
+	...
+```
+The mechanism on other messages work the same, with room events also printing highlighted
+room names along with the highlighted username.

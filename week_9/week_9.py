@@ -68,21 +68,35 @@ def join(message):
     emit('join',
          {'user': message['user'], 'room': message['room']},
          broadcast=True)
+    room_list = [room for room in rooms() if room != request.sid]
+    emit('my response',
+         {'data': 'In rooms: ' + ', '.join(room_list)})
 
 
 @socketio.on('leave', namespace='/test')
 def leave(message):
+    if message['room'] not in rooms():
+        return
     leave_room(message['room'])
+    emit('leave',
+         {'user': message['user'], 'room': message['room']},
+         broadcast=True)
+    room_list = [room for room in rooms() if room != request.sid]
     emit('my response',
-         {'data': 'In rooms: ' + ', '.join(rooms()),
-          'count': session['receive_count']})
+         {'data': 'In rooms: ' + ', '.join(room_list)})
 
 
-@socketio.on('close room', namespace='/test')
+@socketio.on('close', namespace='/test')
 def close(message):
-    emit('my response', {'data': 'Room ' + message['room'] + ' is closing.'},
-         room=message['room'])
+    if message['room'] not in rooms():
+        return
+    emit('close',
+         {'user': message['user'], 'room': message['room']},
+         broadcast=True)
     close_room(message['room'])
+    room_list = [room for room in rooms() if room != request.sid]
+    emit('my response',
+         {'data': 'In rooms: ' + ', '.join(room_list)})
 
 
 @socketio.on('my room event', namespace='/test')
@@ -106,7 +120,7 @@ def test_connect():
 
 @socketio.on('disconnect', namespace='/test')
 def test_disconnect():
-	print('Client disconnected', request.sid)
+    print('Client disconnected', request.sid)
 
 
 @socketio.on('my connect event', namespace='/test')

@@ -58,6 +58,22 @@ $(document).ready(function(){
         $('#log').append(msg_log);
         $('#log').scrollTop($('#log').prop('scrollHeight'));
     });
+
+    socket.on('leave', function(msg) {
+        var msg_log = '<span class="uname">' + msg.user + '</span>' +
+                    ' has left the room ' +
+                    '<span class="uname">[' + msg.room + ']</span>.<br>';
+        $('#log').append(msg_log);
+        $('#log').scrollTop($('#log').prop('scrollHeight'));
+    });
+
+    socket.on('close', function(msg) {
+        var msg_log = '<span class="uname">' + msg.user + '</span>' +
+                    ' is closing the room ' +
+                    '<span class="uname">[' + msg.room + ']</span>.<br>';
+        $('#log').append(msg_log);
+        $('#log').scrollTop($('#log').prop('scrollHeight'));
+    });
     
     socket.on('connect notification', function(msg) {
         var msg_log = '<span class="uname">' + msg.user + '</span>' +
@@ -130,7 +146,10 @@ $(document).ready(function(){
         return false;
     });
     $('form#close').submit(function(event) {
-        socket.emit('close room', {room: $('#close_room').val()});
+        socket.emit('close', {
+            room: $('#close_room').val(),
+            user: username
+        });
         return false;
     });
     $('form#disconnect').submit(function(event) {
