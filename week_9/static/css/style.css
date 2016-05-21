@@ -1,0 +1,321 @@
+@font-face {
+	font-family: 'WINMenu';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/WINMenu.woff') format('woff');
+}
+@font-face {
+	font-family: 'WINDialog';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/WINDialog.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'PragmataFlash12';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/PragmataFlash12.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'micross';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../woff/micross.woff') format('woff');
+}
+
+/* Optional render settings for that '95 aesthetics doe */
+* {
+	-webkit-font-smoothing: none;
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor;
+	
+	font-family: micross;
+}
+
+html, body {
+	height: 100%;	
+}
+
+body {
+    background: url('../img/bg2.png');
+    margin: 0;
+}
+
+#wrapper {
+	margin: 0;
+	height: 100%;
+}
+
+#overlay {
+    width: 400px;
+    background-color: #C3C7CB;
+    position: absolute;
+    top: 5%;
+    left: calc(50% - 200px);
+    left: -moz-calc(50% - 200px);
+    left: -webkit-calc(50% - 200px);
+    left: -o-calc(50% - 200px);
+}
+
+#log { 
+    height: 100px;
+    box-shadow: inset 1px 0 #000, inset 0 1px #000, 1px 0 #FFF, 0 1px #FFF;
+	border-top: 1px solid #7B7F83;
+	border-left: 1px solid #7B7F83;
+	border-right: 1px solid #C3C7CB;
+	border-bottom: 1px solid #C3C7CB;
+    font: 12px micross;
+    overflow: auto;
+    background-color: white;
+    padding: 2px 4px;
+    margin: 5px;
+}
+
+.window {
+	background: #C3C7CB;
+	border-top: 1px solid #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #7B7F83;
+	border-bottom: 1px solid #7B7F83;
+	box-shadow: 1px 0 #000000, 0 1px #000000, 0 -1px #C3C7CB, -1px 0 #C3C7CB;
+	box-shadow: inset -1px 0 #757575, 0 0 0 1px #000, 1px 0 #000;
+	padding: 2px 3px;
+}
+
+.uname {
+    color: rgb(64, 0, 255);
+}
+
+label {
+	margin-left: 5px;
+	font: 12px micross;
+}
+
+#broadcast_data, #room_data {
+	width: 99%;
+	height: 50px;
+	text-align: left;
+	font: 12px micross;
+	border-bottom: 2px solid #C3C7CB;
+	border-right: 2px solid #C3C7CB;
+	border-left: 2px solid #7B7F83;
+	border-top: 2px solid #7B7F83;
+	resize: none;
+}
+
+#username_data {
+	margin: 5px;
+}
+
+#windowbar {
+	position: relative;
+	margin: 0 auto;
+	height: 20px;
+	background-color: #002a92;
+}
+
+#icon {
+	margin: 4px;
+}
+
+.title {
+	position: absolute;
+	font: 17px WINDialog;
+	color: white;
+	margin: 2px;
+}
+
+#windowwrap {
+	padding-top: 5px;
+}
+
+input[type=submit] {
+	font-size: 11px;
+	background: #C3C7CB;
+	box-shadow: inset -1px 0 #757575, 0 0 0 1px #000, 1px 0 #000;
+	border-top: 1px solid #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	text-align: center;
+	display: inline-block;
+	width: 80px;
+}
+
+input {
+	font-size: 12px;
+	border-top: 2px solid #7B7F83;
+	border-left: 2px solid #7B7F83;
+	border-right: 2px solid #C3C7CB;
+	border-bottom: 2px solid #C3C7CB;
+	margin: 0 auto;
+	margin-bottom: 5px;
+}
+
+#disconnect {
+	margin: 0;
+	width: 100%;
+}
+
+#disconnect input {
+	right: 0;
+}
+
+/* extra title bar icons */
+.windowTitleBarButtons {
+	float: right;
+	margin-right: 3px;
+	position: relative;
+	bottom: 0px;
+}
+
+.windowTitleBarButtons div {
+	width: 13px;
+	height: 11px;
+	border-top: 1px solid #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #7B7F83;
+	border-bottom: 1px solid #7B7F83;
+	box-shadow: 1px 1px #000;
+	display: inline-block;
+	background-color: #C3C7CB;
+	background-repeat: no-repeat;
+}
+
+.windowTitleBarButtons div[data-status=enabled]:active {
+	box-shadow: inset 1px 0 #7B7F83, inset 0 1px #7B7F83;
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	background-position: 1px 1px;
+}
+
+.windowTitleBarMinimize {
+	background-image: url('../img/ui/minimize.png');
+}
+
+.windowTitleBarMaximize {
+	background-image: url('../img/ui/maximize.png');
+}
+
+.windowTitleBarClose {
+	background-image: url('../img/ui/close.png');
+}
+
+.windowTitleBarClose[data-status=disabled] {
+	background-image: url('../img/ui/closeDisabled.png');
+}
+
+.dialogBoxButtons {
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.button {
+	width: 69px;
+	height: 18px;
+	font-size: 11px;
+	background: #C3C7CB;
+	box-shadow: inset -1px 0 #757575, 0 0 0 1px #000, 1px 0 #000;
+	border-top: 1px solid #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	text-align: center;
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.button-clicked {
+	box-shadow: 0 0 0 1px #000;
+	border: 1px solid #7B7F83;
+	position: relative;
+	top: 2px;
+}
+
+.button-span {
+	/*border: 1px dotted #000;*/
+	width: 90%;
+	display: block;
+	margin: 2px auto 0 auto;
+}
+
+.button-span-clicked {
+	border: 1px dotted #000;
+	margin: 3px auto 0 auto;
+	position: relative;
+	left: 1px;
+}
+
+/* tabs */
+
+	.etabs { 
+		margin: 0; 
+		padding: 0; 
+	}
+	
+    .tab { 
+	    display: inline-block; 
+	    zoom:1; 
+	    background: #C3C7CB; 
+	    -moz-border-radius: 4px 4px 0 0; 
+	    -webkit-border-radius: 4px 4px 0 0;
+	    font-family: micross;
+	    border-top: 1px solid #FFF;
+		border-left: 1px solid #FFF;
+		border-right: 1px solid #7B7F83;
+		z-index: 1; 
+	}
+	
+    .tab a { 
+	    font-size: 12px; 
+	    line-height: 1.5em; 
+	    display: block; 
+	    padding: 0 10px; 
+	    outline: none; 
+	    text-decoration: none; 
+	    color: black;
+	}
+	
+    .tab a:hover { 
+	    text-decoration: none; 
+	}
+	
+    .tab.active { 
+	    background: #C3C7CB; 
+	    position: relative; 
+	    padding-top: 2px;
+	}
+	
+    .tab a:visited { 
+	    text-decoration: none; 
+	    color: black;
+	}
+	
+    .tab-container .panel-container { 
+	    background: #C3C7CB; 
+	    padding: 5px 10px 10px 5px;
+	    -moz-border-radius: 0 2px 2px 2px; 
+	    -webkit-border-radius: 0 2px 2px 2px; 
+	}
+	
+    .panel-container { 
+	    margin-bottom: 10px;
+	    border-top: 1px solid #FFF;
+		border-left: 1px solid #FFF;
+		border-right: 1px solid #7B7F83;
+		border-bottom: 1px solid #7B7F83;
+		box-shadow: 1px 0 #000000, 0 1px #000000, 0 -1px #C3C7CB, -1px 0 #C3C7CB;
+		z-index: -99;
+	}
+	
+	.tab-container {
+		margin: 5px; 
+	}

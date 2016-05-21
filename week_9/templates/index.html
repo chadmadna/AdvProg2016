@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>vaporchat</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/easytabs.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/hashchange.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+<div id="wrapper">
+	
+    <div id="overlay" class='window'>
+	    
+	    <div id='windowbar'>
+			<img id='icon' src="{{ url_for('static', filename='img/icon2.gif') }}">
+		    <span class='title'>VaporChat</span>
+		    <div class="windowTitleBarButtons">
+			    <div class="windowTitleBarMinimize"></div>
+			    <div class="windowTitleBarMaximize"></div>
+			    <div class="windowTitleBarClose"></div>
+		    </div>
+	    </div>
+	    
+	    <div id='windowwrap'>
+
+	        <form id="username" method="POST" action='#'>
+		        <label for='username_data'>Username:</label>
+	            <input type="text" name="username_data" id="username_data" placeholder="Guest"
+	            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+	            <div class="dialogBoxButtons"><span>
+		            <input class="button" type="submit" value="Update">
+	            </span></div>
+	        </form>
+	
+	        <div id="log"></div>
+			
+			<!-- TABS -->
+			<div id="tab-container" class='tab-container'>
+			<ul class='etabs'>
+			   <li class='tab'><a href="#bc-chat">Broadcast</a></li>
+			   <li class='tab'><a href="#room-chat">Room Chat</a></li>
+			   <li class='tab'><a href="#rooms">Rooms</a></li>
+			</ul>
+			<div class='panel-container'>
+				
+				<div id="bc-chat">
+					<form id="broadcast" method="POST" action='#'>
+			            <textarea name="broadcast_data" id="broadcast_data" placeholder="Send message.."></textarea>
+			            <div class="dialogBoxButtons"><span>
+				            <input type="submit" value="Send">
+			            </span></div>
+			        </form>
+				</div>
+								
+				<div id="room-chat">
+					<form id="send_room" method="POST" action='#'>
+			            <input type="text" name="room_name" id="room_name" placeholder="Room Name">
+			            <textarea type="text" name="room_data" id="room_data" placeholder="Send message.."></textarea>
+			            <div class="dialogBoxButtons"><span>
+				            <input type="submit" value="Send">
+			            </span></div>
+			        </form>
+				</div>
+				
+				<div id="rooms">
+					<form id="join" method="POST" action='#'>
+			            <input type="text" name="join_room" id="join_room" placeholder="Room Name">
+			            <input type="submit" value="Join Room">
+			        </form>
+			
+			        <form id="leave" method="POST" action='#'>
+			            <input type="text" name="leave_room" id="leave_room" placeholder="Room Name">
+			            <input type="submit" value="Leave Room">
+			        </form>
+			
+			        <form id="close" method="POST" action="#">
+			            <input type="text" name="close_room" id="close_room" placeholder="Room Name">
+			            <input type="submit" value="Close Room">
+			        </form>
+				</div>
+			</div>
+		
+	        <form id="disconnect" method="POST" action="#" align="right">
+	            <div class="dialogBoxButtons"><span>
+		            <input type="submit" value="Disconnect">
+	            </span></div>
+	        </form>
+	    </div>
+    </div>
+</div>    
+</body>
+</html>
